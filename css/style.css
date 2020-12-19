@@ -1,0 +1,130 @@
+* {
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: white;
+}
+
+.burger {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  -webkit-transform: rotateX(90deg);
+          transform: rotateX(90deg);
+  -webkit-transition: -webkit-transform 0.8s ease-in-out;
+  transition: -webkit-transform 0.8s ease-in-out;
+  transition: transform 0.8s ease-in-out;
+  transition: transform 0.8s ease-in-out, -webkit-transform 0.8s ease-in-out;
+}
+body:hover .burger, .init .burger {
+  -webkit-transform: rotateX(0);
+          transform: rotateX(0);
+}
+
+.top, .middletop, .middle, .middlebottom, .bottom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.bar.top {
+  -webkit-transform: translateZ(108.33333px);
+          transform: translateZ(108.33333px);
+}
+.bar.middletop {
+  -webkit-transform: translateZ(54.16667px);
+          transform: translateZ(54.16667px);
+}
+.bar.middlebottom {
+  -webkit-transform: translateZ(-54.16667px);
+          transform: translateZ(-54.16667px);
+}
+.bar.bottom {
+  -webkit-transform: translateZ(-108.33333px);
+          transform: translateZ(-108.33333px);
+}
+
+.box {
+  position: absolute;
+  width: 50px;
+  height: 150.06002px;
+  bottom: 125px;
+  left: 100px;
+  -webkit-transform-origin: center bottom;
+          transform-origin: center bottom;
+}
+.box:nth-child(1) {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.box:nth-child(2) {
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+.box:nth-child(3) {
+  -webkit-transform: rotate(225deg);
+          transform: rotate(225deg);
+}
+.box:nth-child(4) {
+  -webkit-transform: rotate(315deg);
+          transform: rotate(315deg);
+}
+
+.dark .box .top, .dark .box .bottom {
+  background: black;
+}
+
+.light .box .top, .light .box .bottom {
+  background: white;
+}
+.box .top:before, .box .top:after, .box .bottom:before, .box .bottom:after {
+  display: block;
+  position: absolute;
+  content: '';
+}
+.dark .box .top:before, .dark .box .top:after, .dark .box .bottom:before, .dark .box .bottom:after {
+  background: black;
+}
+
+.light .box .top:before, .light .box .top:after, .light .box .bottom:before, .light .box .bottom:after {
+  background: white;
+}
+.box .top {
+  -webkit-transform: translateZ(25px);
+          transform: translateZ(25px);
+}
+.box .top:before, .box .top:after {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.box .top:before {
+  -webkit-transform: rotateY(90deg) translate3d(50%, 0, 25px);
+          transform: rotateY(90deg) translate3d(50%, 0, 25px);
+}
+.box .top:after {
+  -webkit-transform: rotateY(90deg) translate3d(50%, 0, -25px);
+          transform: rotateY(90deg) translate3d(50%, 0, -25px);
+}
+.box .bottom {
+  -webkit-transform: translateZ(-25px);
+          transform: translateZ(-25px);
+}

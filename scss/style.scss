@@ -1,0 +1,90 @@
+$duration : .8s;
+$size : 250px;
+$colors : black white;
+
+@mixin color {
+	@at-root {
+		.dark & { background: nth($colors, 1); }
+		.light & { background: nth($colors, 2); }
+	}
+}
+
+* { transform-style: preserve-3d; }
+html, body { height: 100%; }
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: nth($colors, 2);
+}
+
+.burger {
+	position: relative;
+	width: $size;
+	height: $size;
+	transform: rotateX(90deg);
+	transition: transform $duration ease-in-out;
+	
+	body:hover &,
+	.init & { transform: rotateX(0); }
+}
+
+.top, .middletop, .middle, .middlebottom, .bottom {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.bar {
+	&.top { transform: translateZ($size/3 + $size/10); }
+	&.middletop { transform: translateZ($size/6 + $size/20); }
+	&.middlebottom { transform: translateZ(-$size/6 - $size/20); }
+	&.bottom { transform: translateZ(-$size/3 - $size/10); }
+}
+
+.box {
+	position: absolute;
+	width: $size/5;
+	height: $size/1.666;
+	bottom: $size/2;
+	left: $size/2 - $size/10;
+	transform-origin: center bottom;
+	
+	&:nth-child(1) { transform: rotate(45deg); }
+	&:nth-child(2) { transform: rotate(135deg); }
+	&:nth-child(3) { transform: rotate(225deg); }
+	&:nth-child(4) { transform: rotate(315deg); }
+}
+
+.box {	
+	.top, .bottom {
+		@include color;
+		
+		&:before, &:after {
+			@include color;
+			display: block;
+			position: absolute;
+			content: '';
+		}
+	}
+
+	.top {
+		transform: translateZ($size/10);
+	
+		&:before, &:after {
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+
+		&:before { transform: rotateY(90deg) translate3d(50%,0,$size/10); }
+		&:after { transform: rotateY(90deg) translate3d(50%,0,-$size/10); }
+	}
+
+	.bottom {
+		transform: translateZ(-$size/10);
+	}
+}
